@@ -54,6 +54,11 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
                   </Link>
                 </NavbarItem>
                 <NavbarItem>
+                  <Link href="/contributors" className="text-foreground/70 hover:text-foreground transition-colors text-sm">
+                    Contributors
+                  </Link>
+                </NavbarItem>
+                <NavbarItem>
                   <Link href="/about" className="text-foreground/70 hover:text-foreground transition-colors text-sm">
                     About
                   </Link>
@@ -98,6 +103,11 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
                 <NavbarMenuItem>
                   <Link href="/docs" className="w-full text-foreground/70 hover:text-foreground py-2">
                     Docs
+                  </Link>
+                </NavbarMenuItem>
+                <NavbarMenuItem>
+                  <Link href="/contributors" className="w-full text-foreground/70 hover:text-foreground py-2">
+                    Contributors
                   </Link>
                 </NavbarMenuItem>
                 <NavbarMenuItem>
