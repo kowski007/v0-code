@@ -1,8 +1,8 @@
-# OyaPrompt - AI Voice Assistant
+# OyaTalk - AI Voice Assistant
 
 ## Overview
 
-OyaPrompt is an experimental AI-powered voice assistant application that enables users to accomplish tasks through natural voice conversations. Built on the ElevenLabs Agents platform, the application provides an intuitive interface for voice-based interactions with AI agents that can help with various tasks like sending emails, ordering food, booking rides, and reading documents.
+OyaTalk is an experimental AI-powered voice assistant application that enables users to accomplish tasks through natural voice conversations. Built on the ElevenLabs Agents platform, the application provides an intuitive interface for voice-based interactions with AI agents that can help with various tasks like sending emails, ordering food, booking rides, and reading documents.
 
 The application is a Next.js-based web application originally scaffolded through v0.app and deployed on Vercel. It features a modern, accessible UI with dark mode support and responsive design.
 

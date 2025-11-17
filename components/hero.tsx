@@ -17,7 +17,7 @@ export function Hero() {
       <div className="text-center max-w-3xl mx-auto">
         <div className="flex items-center justify-center gap-2 mb-6">
           <h1 className="text-4xl sm:text-5xl font-semibold text-foreground">
-            Welcome to OyaPrompt
+            Welcome to OyaTalk
           </h1>
           <span className="inline-block px-3 py-1 text-xs font-medium text-muted-foreground border border-border rounded-full">
             Experimental
