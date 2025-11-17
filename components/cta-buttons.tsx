@@ -66,7 +66,7 @@ export function CtaButtons() {
   return (
     <motion.div
       ref={containerRef}
-      className="w-full py-2 -mt-12"
+      className="w-full py-2 -mt-20"
       variants={containerVariants}
       initial="hidden"
       animate={isVisible ? 'visible' : 'hidden'}

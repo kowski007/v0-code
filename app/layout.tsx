@@ -6,6 +6,7 @@ import { HeroUIProvider, Navbar, NavbarBrand, NavbarContent, NavbarItem, NavbarM
 import { Instrument_Serif } from 'next/font/google'
 import { ThemeProvider } from "@/components/theme-provider"
 import { ThemeToggle } from "@/components/theme-toggle"
+import { Menu } from 'lucide-react'
 
 const instrumentSerif = Instrument_Serif({ 
   subsets: ['latin'],
@@ -81,7 +82,9 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
                 </NavbarItem>
               </NavbarContent>
 
-              <NavbarMenuToggle className="sm:hidden ml-2" />
+              <NavbarMenuToggle className="sm:hidden ml-2">
+                {(isOpen) => <Menu className="w-5 h-5" />}
+              </NavbarMenuToggle>
 
               {/* Mobile Menu */}
               <NavbarMenu className="bg-background">

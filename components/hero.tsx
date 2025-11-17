@@ -7,7 +7,7 @@ import { ChevronRight } from 'lucide-react'
 
 export function Hero() {
   return (
-    <div className="min-h-[calc(100vh-80px)] flex flex-col items-center justify-center px-4 pt-12 pb-0 gap-4">
+    <div className="min-h-[50vh] flex flex-col items-center justify-center px-4 pt-12 pb-0 gap-4">
       {/* Orb */}
       <div className="w-32 h-32 sm:w-40 sm:h-40">
         <SegmentedOrb />
