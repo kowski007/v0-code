@@ -1,3 +1,4 @@
+
 'use client'
 
 import { motion } from 'framer-motion'
@@ -68,7 +69,7 @@ export function AnimatedIcons() {
       whileInView="visible"
       viewport={{ once: true, margin: '-100px' }}
     >
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 max-w-4xl mx-auto px-4">
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12 max-w-4xl mx-auto px-4">
         {icons.map((item, index) => {
           const Icon = item.icon
           return (
@@ -79,7 +80,7 @@ export function AnimatedIcons() {
               whileHover="hover"
             >
               <div className={`${item.color} transition-colors duration-300`}>
-                <Icon size={48} className="md:w-16 md:h-16" />
+                <Icon size={48} className="md:w-16 md:h-16" strokeWidth={1.5} />
               </div>
               <p className="text-sm md:text-base text-foreground font-medium text-center">
                 {item.label}
