@@ -34,6 +34,51 @@
   body {
     @apply bg-background text-foreground font-serif;
   }
+
+  /* Make scrollbar transparent */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: transparent;
+    border-radius: 4px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: transparent;
+  }
+
+  /* Firefox scrollbar */
+  * {
+    scrollbar-color: transparent transparent;
+  }
+}
+
+/* Map gray color names to CSS variables for dark mode */
+.dark {
+  --tw-text-gray-900: var(--foreground);
+  --tw-text-gray-700: var(--muted-foreground);
+  --tw-text-gray-600: var(--muted-foreground);
+  --tw-bg-white: var(--card);
+  --tw-border-gray-200: var(--border);
+}
+
+/* Hide any text content in the mobile navbar toggle, show only icon */
+[aria-label="Toggle navigation"] span:not(svg) {
+  display: none !important;
+}
+
+/* Ensure mobile navbar toggle icon is visible */
+[aria-label="Toggle navigation"] svg {
+  display: block !important;
+  opacity: 1 !important;
+  color: var(--foreground) !important;
+  stroke: currentColor !important;
 }
 
 /* Removed excessive animations - clean subtle animations only */

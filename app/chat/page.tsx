@@ -1,8 +1,8 @@
 import { ConvAI } from "@/components/ConvAI"
 
 export const metadata = {
-  title: "Voice Chat - OyaPrompt",
-  description: "Turn your voice into organized notes with OyaPrompt AI agents.",
+  title: "Voice Chat - OyaTalk",
+  description: "Turn your voice into organized notes with OyaTalk AI agents.",
 }
 
 export default function ChatPage() {

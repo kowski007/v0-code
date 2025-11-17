@@ -90,3 +90,16 @@
     @apply bg-background text-foreground;
   }
 }
+
+@layer components {
+  /* Ensure mobile navbar toggle shows only the icon. Any non-SVG children
+     (visible text) are hidden while keeping the SVG icon visible. */
+  [aria-label="Toggle navigation"] > :not(svg) {
+    display: none !important;
+  }
+  [aria-label="Toggle navigation"] {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+}

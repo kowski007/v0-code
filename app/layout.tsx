@@ -6,6 +6,7 @@ import { HeroUIProvider, Navbar, NavbarBrand, NavbarContent, NavbarItem, NavbarM
 import { Instrument_Serif } from 'next/font/google'
 import { ThemeProvider } from "@/components/theme-provider"
 import { ThemeToggle } from "@/components/theme-toggle"
+import { OrbLogo } from "@/components/orb-logo"
 import { Menu } from 'lucide-react'
 
 const instrumentSerif = Instrument_Serif({ 
@@ -14,9 +15,13 @@ const instrumentSerif = Instrument_Serif({
 })
 
 export const metadata: Metadata = {
-  title: "OyaPrompt - Voice to Organized Notes",
+  title: "OyaTalk - Voice to Organized Notes",
   description: "Transform your voice into structured notes with AI-powered conversation agents.",
-    generator: 'v0.app'
+    generator: 'v0.app',
+    icons: {
+      icon: '/favicon.svg',
+      shortcut: '/favicon.svg',
+    },
 }
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
@@ -27,8 +32,16 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
           <HeroUIProvider>
             <Navbar isBordered maxWidth="full" className="bg-background border-b border-border">
               <NavbarBrand>
-                <Link href="/" className="font-semibold text-lg text-foreground">
-                  OyaPrompt
+                <Link href="/" className="flex items-center gap-2">
+                  <div className="flex flex-col">
+                    <div className="flex items-center gap-2">
+                      <OrbLogo size={28} />
+                      <span className="font-semibold text-lg text-foreground">OyaTalk</span>
+                    </div>
+                    <span className="text-xs font-medium text-muted-foreground px-1 mt-0.5">
+                      by NaijaPrompt
+                    </span>
+                  </div>
                 </Link>
               </NavbarBrand>
 
@@ -82,8 +95,8 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
                 </NavbarItem>
               </NavbarContent>
 
-              <NavbarMenuToggle className="sm:hidden ml-2">
-                {(isOpen) => <Menu className="w-5 h-5" />}
+              <NavbarMenuToggle className="sm:hidden ml-2" srOnlyText="" aria-label="Toggle navigation">
+                <Menu className="w-6 h-6 text-foreground stroke-2" />
               </NavbarMenuToggle>
 
               {/* Mobile Menu */}

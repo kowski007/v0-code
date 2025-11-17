@@ -6,22 +6,22 @@ export default function Docs() {
   return (
     <main className="w-full min-h-screen py-12 px-4">
       <div className="max-w-3xl w-full mx-auto">
-        <h1 className="text-4xl font-bold text-gray-900 mb-2">
+        <h1 className="text-4xl font-bold text-foreground mb-2">
           Documentation
         </h1>
-        <p className="text-gray-600 mb-12">
+        <p className="text-muted-foreground mb-12">
           Learn how to use OyaTalk and unlock the full power of voice-powered AI assistance.
         </p>
 
         <div className="space-y-6">
-          <Card className="bg-white border border-gray-200">
+          <Card className="bg-card border border-border">
             <CardBody className="p-8">
-              <h2 className="text-2xl font-bold text-gray-900 mb-4">Getting Started</h2>
-              <p className="text-gray-700 mb-4">
+              <h2 className="text-2xl font-bold text-foreground mb-4">Getting Started</h2>
+              <p className="text-muted-foreground mb-4">
                 OyaTalk is a smart, multilingual Nigerian AI voice assistant that helps you accomplish tasks through natural conversation. Simply speak to OyaTalk like you would to a personal assistant — she understands Nigerian English, Pidgin, and local languages.
               </p>
-              <h3 className="text-lg font-semibold text-gray-900 mb-2">Quick Steps:</h3>
-              <ol className="list-decimal list-inside text-gray-700 space-y-2">
+              <h3 className="text-lg font-semibold text-foreground mb-2">Quick Steps:</h3>
+              <ol className="list-decimal list-inside text-muted-foreground space-y-2">
                 <li>Visit the OyaTalk homepage</li>
                 <li>Click "Get Started" or choose a specific action card</li>
                 <li>Start speaking naturally — describe what you want to accomplish</li>

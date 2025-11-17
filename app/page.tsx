@@ -1,6 +1,7 @@
 import { Hero } from "@/components/hero"
 import { CtaButtons } from "@/components/cta-buttons"
 import { Features } from "@/components/features"
+import { CtaMicrophone } from "@/components/cta-microphone"
 
 export default function Home() {
   return (
@@ -8,6 +9,7 @@ export default function Home() {
       <Hero />
       <CtaButtons />
       <Features />
+      <CtaMicrophone />
     </main>
   )
 }

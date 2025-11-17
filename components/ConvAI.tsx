@@ -4,7 +4,7 @@ import { Button, Card, CardBody, Chip } from "@heroui/react"
 import { useCallback, useState, useEffect, useMemo } from "react"
 import { useConversation } from "@elevenlabs/react"
 import { cn } from "@/lib/utils"
-import { SegmentedOrb } from "./segmented-orb"
+import { Orb } from "./orb"
 import { MicIcon, StopCircle, AlertCircle } from 'lucide-react'
 
 async function requestMicrophonePermission() {
@@ -13,6 +13,7 @@ async function requestMicrophonePermission() {
     return true
   } catch (error) {
     console.error("Microphone permission denied:", error)
+    // Provide more specific guidance for the user/dev environment
     return false
   }
 }
@@ -45,7 +46,7 @@ async function getSignedUrl(): Promise<{ signedUrl: string; isDemo?: boolean }> 
   }
 }
 
-export function ConvAI() {
+export function ConvAI({ autoStart = false }: { autoStart?: boolean }) {
   const [error, setError] = useState<string | null>(null)
   const [isLoading, setIsLoading] = useState(false)
   const [isDemoMode, setIsDemoMode] = useState(false)
@@ -65,7 +66,8 @@ export function ConvAI() {
       if (isDemoMode) {
         setError("Demo mode: This is a placeholder connection. Set up your AGENT_ID for real functionality.")
       } else {
-        setError(`Conversation error: ${error.message || "Unknown error"}`)
+        const msg = typeof error === "string" ? error : (error && typeof error === "object" && "message" in (error as any) ? (error as any).message : String(error))
+        setError(`Conversation error: ${msg || "Unknown error"}`)
       }
       setIsLoading(false)
     },
@@ -75,10 +77,18 @@ export function ConvAI() {
     try {
       setIsLoading(true)
       setError(null)
+      // prevent double-start when already connected or loading
+      if (isLoading || conversation.status === "connected") {
+        console.log("Conversation already starting or connected")
+        setIsLoading(false)
+        return
+      }
 
       const hasPermission = await requestMicrophonePermission()
       if (!hasPermission) {
-        setError("Microphone permission is required for voice conversation")
+        setError(
+          "Microphone permission is required for voice conversation. Please allow microphone access in your browser and try again. If you're in a remote/dev preview (Codespaces / GitHub.dev), microphone access may be blocked—test locally or grant permission in your environment.",
+        )
         setIsLoading(false)
         return
       }
@@ -94,14 +104,30 @@ export function ConvAI() {
         return
       }
 
-      await conversation.startSession({ signedUrl })
-      setIsLoading(false)
+      try {
+        await conversation.startSession({ signedUrl })
+      } catch (err) {
+        console.error("startSession failed:", err)
+        setError(err instanceof Error ? err.message : String(err))
+      } finally {
+        setIsLoading(false)
+      }
     } catch (error) {
       console.error("Error starting conversation:", error)
-      setError(error instanceof Error ? error.message : "Failed to start conversation")
+      setError(
+        error instanceof Error ? error.message : "Failed to start conversation",
+      )
       setIsLoading(false)
     }
   }
+
+  // Auto-start if requested
+  useEffect(() => {
+    if (autoStart) {
+      startConversation()
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [autoStart])
 
   const stopConversation = useCallback(async () => {
     try {
@@ -121,45 +147,75 @@ export function ConvAI() {
   const isConnected = conversation.status === "connected"
 
   return (
-    <div className="w-full max-w-2xl mx-auto px-4">
+    <div className="w-full max-w-2xl mx-auto px-2">
       <div className="text-center">
         {/* Agent Name and Status */}
-        <h1 className="text-3xl sm:text-4xl font-semibold text-gray-900 mb-2">
-          OyaPrompt
+        <h1 className="text-2xl sm:text-3xl font-semibold text-foreground mb-1">
+          OyaTalk
         </h1>
-        <p className="text-lg text-gray-600 mb-12">
+        <p className="text-base text-foreground/70 mb-6">
           How can I help you today?
         </p>
 
         {/* Voice Orb */}
-        <div className="flex justify-center mb-12">
-          <div className="w-48 h-48 sm:w-56 sm:h-56">
-            <SegmentedOrb 
-              isActive={isConnected} 
-              isSpeaking={isConnected && conversation.isSpeaking}
+        <div className="flex justify-center mb-6">
+          <div className="w-40 h-40 sm:w-48 sm:h-48">
+            <Orb 
+              agentState={
+                !isConnected 
+                  ? null 
+                  : conversation.isSpeaking 
+                    ? "talking" 
+                    : "listening"
+              }
+              colors={["#CADCFC", "#A0B9D1"]}
             />
           </div>
         </div>
 
         {/* Error Message */}
         {error && (
-          <div className="mb-8 p-4 rounded-lg bg-red-50 border border-red-200 flex gap-3 text-left">
-            <AlertCircle className="w-5 h-5 text-red-600 flex-shrink-0 mt-0.5" />
-            <div>
-              <div className="font-medium text-red-900 text-sm">{isDemoMode ? "Demo Mode" : "Configuration Required"}</div>
-              <div className="text-red-800 text-xs mt-1">{error}</div>
+          <div className="mb-6 p-3 rounded-lg bg-red-50 dark:bg-red-950 border border-red-200 dark:border-red-800 flex flex-col gap-2 text-left">
+            <div className="flex items-start gap-3">
+              <AlertCircle className="w-5 h-5 text-red-600 dark:text-red-400 flex-shrink-0 mt-0.5" />
+              <div>
+                <div className="font-medium text-red-900 dark:text-red-200 text-sm">{isDemoMode ? "Demo Mode" : "Configuration Required"}</div>
+                <div className="text-red-800 dark:text-red-300 text-xs mt-1 whitespace-pre-wrap">{error}</div>
+              </div>
+            </div>
+
+            <div className="flex gap-2 mt-2">
+              <Button
+                onClick={() => startConversation()}
+                className="bg-foreground text-background"
+                size="sm"
+                radius="full"
+              >
+                Retry
+              </Button>
+
+              {isConfigError && (
+                <a
+                  href="https://github.com/elevenlabs/convai-docs"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="text-xs text-foreground/70 underline self-center"
+                >
+                  Setup guide
+                </a>
+              )}
             </div>
           </div>
         )}
 
         {/* Control Button */}
-        <div className="flex flex-col gap-3">
+        <div className="flex flex-row gap-2 justify-center items-center flex-wrap">
           <Button
             isLoading={isLoading}
             isDisabled={isLoading || isConnected}
             onClick={startConversation}
-            className="bg-gray-900 text-white font-medium w-full sm:w-auto px-8"
-            size="lg"
+            className="bg-foreground text-background font-medium px-6"
+            size="md"
             startContent={!isLoading && <MicIcon className="w-5 h-5" />}
             radius="full"
           >
@@ -171,12 +227,12 @@ export function ConvAI() {
               isLoading={isLoading}
               onClick={stopConversation}
               variant="bordered"
-              className="border-gray-300 text-gray-900 font-medium w-full sm:w-auto"
-              size="lg"
+              className="border-foreground/30 text-foreground font-medium"
+              size="md"
               startContent={!isLoading && <StopCircle className="w-5 h-5" />}
               radius="full"
             >
-              End Conversation
+              End
             </Button>
           )}
         </div>

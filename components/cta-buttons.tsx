@@ -3,6 +3,7 @@
 import { useRef, useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
 import { UtensilsCrossed, Car, Bell, Mail } from 'lucide-react'
+import { ConvAI } from './ConvAI'
 
 interface ButtonConfig {
   label: string
@@ -20,6 +21,7 @@ const buttons: ButtonConfig[] = [
 
 export function CtaButtons() {
   const [isVisible, setIsVisible] = useState(false)
+  const [open, setOpen] = useState(false)
   const containerRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
@@ -66,7 +68,7 @@ export function CtaButtons() {
   return (
     <motion.div
       ref={containerRef}
-      className="w-full py-2 -mt-20"
+      className="w-full py-8 mt-8"
       variants={containerVariants}
       initial="hidden"
       animate={isVisible ? 'visible' : 'hidden'}
@@ -75,10 +77,13 @@ export function CtaButtons() {
         {buttons.map((btn, index) => {
           const Icon = btn.icon
           return (
-            <motion.div
+            <motion.button
               key={index}
               variants={buttonVariants}
-              className="flex flex-col items-center justify-center gap-2 cursor-pointer"
+              className="flex flex-col items-center justify-center gap-2"
+              onClick={() => setOpen(true)}
+              type="button"
+              aria-label={btn.label}
             >
               <motion.div
                 whileHover={{ scale: 1.1, rotate: 5 }}
@@ -94,10 +99,24 @@ export function CtaButtons() {
                   {btn.subtitle}
                 </span>
               </div>
-            </motion.div>
+            </motion.button>
           )
         })}
       </div>
+      {open && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60">
+          <div className="bg-background rounded-xl shadow-xl p-6 max-w-lg w-full relative">
+            <button
+              className="absolute top-2 right-2 text-foreground"
+              onClick={() => setOpen(false)}
+              aria-label="Close chat agent"
+            >
+              ×
+            </button>
+            <ConvAI autoStart={true} />
+          </div>
+        </div>
+      )}
     </motion.div>
   )
 }
