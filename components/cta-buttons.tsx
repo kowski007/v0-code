@@ -66,12 +66,12 @@ export function CtaButtons() {
   return (
     <motion.div
       ref={containerRef}
-      className="w-full py-2 -mt-8"
+      className="w-full py-2 mt-0"
       variants={containerVariants}
       initial="hidden"
       animate={isVisible ? 'visible' : 'hidden'}
     >
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8 max-w-3xl mx-auto px-4">
+      <div className="grid grid-cols-4 gap-3 md:gap-8 max-w-3xl mx-auto px-4">
         {buttons.map((btn, index) => {
           const Icon = btn.icon
           return (
@@ -84,13 +84,13 @@ export function CtaButtons() {
                 whileHover={{ scale: 1.1, rotate: 5 }}
                 transition={{ type: 'spring', stiffness: 400, damping: 10 }}
               >
-                <Icon className="w-12 h-12 text-foreground" strokeWidth={1.5} />
+                <Icon className="w-8 h-8 md:w-12 md:h-12 text-foreground" strokeWidth={1.5} />
               </motion.div>
               <div className="text-center">
-                <span className="text-sm font-medium text-foreground block leading-tight">
+                <span className="text-[10px] md:text-sm font-medium text-foreground block leading-tight">
                   {btn.label}
                 </span>
-                <span className="text-xs text-muted-foreground block leading-tight mt-0.5">
+                <span className="text-[8px] md:text-xs text-muted-foreground block leading-tight mt-0.5">
                   {btn.subtitle}
                 </span>
               </div>
