@@ -10,7 +10,7 @@ export default function Docs() {
           Documentation
         </h1>
         <p className="text-gray-600 mb-12">
-          Learn how to use OyaPrompt and integrate it with your workflow.
+          Learn how to use OyaTalk and unlock the full power of voice-powered AI assistance.
         </p>
 
         <div className="space-y-6">
@@ -18,37 +18,46 @@ export default function Docs() {
             <CardBody className="p-8">
               <h2 className="text-2xl font-bold text-gray-900 mb-4">Getting Started</h2>
               <p className="text-gray-700 mb-4">
-                OyaPrompt is an AI voice assistant that helps you accomplish tasks through natural conversation. Simply click on any of the action cards or enter the main chat to start interacting with the agent.
+                OyaTalk is a smart, multilingual Nigerian AI voice assistant that helps you accomplish tasks through natural conversation. Simply speak to OyaTalk like you would to a personal assistant — she understands Nigerian English, Pidgin, and local languages.
               </p>
               <h3 className="text-lg font-semibold text-gray-900 mb-2">Quick Steps:</h3>
               <ol className="list-decimal list-inside text-gray-700 space-y-2">
-                <li>Visit the OyaPrompt homepage</li>
-                <li>Click "Enter Main Chat" or choose a specific action card</li>
-                <li>Describe what you want to accomplish</li>
-                <li>The AI agent will help you complete the task</li>
+                <li>Visit the OyaTalk homepage</li>
+                <li>Click "Get Started" or choose a specific action card</li>
+                <li>Start speaking naturally — describe what you want to accomplish</li>
+                <li>OyaTalk will understand and help you complete the task</li>
+                <li>You can speak in English, Pidgin, or mix languages naturally</li>
               </ol>
             </CardBody>
           </Card>
 
           <Card className="bg-white border border-gray-200">
             <CardBody className="p-8">
-              <h2 className="text-2xl font-bold text-gray-900 mb-4">Available Actions</h2>
+              <h2 className="text-2xl font-bold text-gray-900 mb-4">What OyaTalk Can Do</h2>
               <div className="space-y-4">
                 <div>
-                  <h3 className="font-semibold text-gray-900">Send a Mail</h3>
-                  <p className="text-gray-700">Compose and send emails directly through the voice assistant. Perfect for quick messages and follow-ups.</p>
+                  <h3 className="font-semibold text-gray-900">Plan & Organize</h3>
+                  <p className="text-gray-700">Schedule meetings, set reminders, create to-do lists, and manage your calendar through natural voice commands.</p>
                 </div>
                 <div>
-                  <h3 className="font-semibold text-gray-900">Order Food</h3>
-                  <p className="text-gray-700">Browse restaurants, check menus, and place food orders using just your voice.</p>
+                  <h3 className="font-semibold text-gray-900">Research & Information</h3>
+                  <p className="text-gray-700">Gather live data, get summaries, and research topics using integrated tools like Perplexity and web APIs.</p>
                 </div>
                 <div>
-                  <h3 className="font-semibold text-gray-900">Order a Ride</h3>
-                  <p className="text-gray-700">Request and book rides with a simple voice command. Fast and convenient transportation.</p>
+                  <h3 className="font-semibold text-gray-900">Work Management</h3>
+                  <p className="text-gray-700">Manage tasks in Linear, Trello, or Notion. Keep your projects organized and on track.</p>
                 </div>
                 <div>
-                  <h3 className="font-semibold text-gray-900">Read Documents</h3>
-                  <p className="text-gray-700">Upload documents and get AI-powered summaries and insights instantly.</p>
+                  <h3 className="font-semibold text-gray-900">Communication</h3>
+                  <p className="text-gray-700">Send messages via Slack, compose and send emails, or send SMS — all through voice commands.</p>
+                </div>
+                <div>
+                  <h3 className="font-semibold text-gray-900">Personal Tasks</h3>
+                  <p className="text-gray-700">Order food, book rides with Bolt or Uber, buy tickets, check flight information, and handle daily errands.</p>
+                </div>
+                <div>
+                  <h3 className="font-semibold text-gray-900">Language Translation</h3>
+                  <p className="text-gray-700">Translate and interpret between English, Pidgin, Yoruba, Igbo, and Hausa seamlessly.</p>
                 </div>
               </div>
             </CardBody>
@@ -56,21 +65,52 @@ export default function Docs() {
 
           <Card className="bg-white border border-gray-200">
             <CardBody className="p-8">
-              <h2 className="text-2xl font-bold text-gray-900 mb-4">API Integration</h2>
+              <h2 className="text-2xl font-bold text-gray-900 mb-4">Language Support</h2>
               <p className="text-gray-700 mb-4">
-                OyaPrompt uses ElevenLabs Agents API for voice processing and natural language understanding. The platform supports MCP (Model Context Protocol) servers for seamless third-party integrations.
+                OyaTalk is built to understand how Nigerians actually speak. You can:
               </p>
-              <p className="text-gray-700">
-                Currently supported integrations include Perplexity, Linear, Slack, and more. Custom integrations can be added through MCP server configuration.
+              <ul className="list-disc list-inside text-gray-700 space-y-2">
+                <li>Speak in Nigerian English or pure Pidgin</li>
+                <li>Mix languages naturally (code-switching)</li>
+                <li>Use local expressions like "Abeg wait small", "How far?", "No wahala"</li>
+                <li>Communicate in Yoruba, Igbo, or Hausa</li>
+                <li>OyaTalk understands Nigerian culture, slang, and context</li>
+              </ul>
+            </CardBody>
+          </Card>
+
+          <Card className="bg-white border border-gray-200">
+            <CardBody className="p-8">
+              <h2 className="text-2xl font-bold text-gray-900 mb-4">Technology & Integrations</h2>
+              <p className="text-gray-700 mb-4">
+                OyaTalk is powered by ElevenLabs' advanced AI technology and created by NaijaPrompt. The platform connects to:
               </p>
+              <ul className="list-disc list-inside text-gray-700 space-y-2">
+                <li>The NaijaPrompt Marketplace (naijaprompt.ng) for tools and extensions</li>
+                <li>External APIs for real-world actions and live data</li>
+                <li>Perplexity, Linear, Slack, Notion, Trello, and more</li>
+                <li>Local Nigerian services (Bolt, Uber, food delivery, etc.)</li>
+              </ul>
             </CardBody>
           </Card>
 
           <Card className="bg-white border border-gray-200">
             <CardBody className="p-8">
               <h2 className="text-2xl font-bold text-gray-900 mb-4">Privacy & Security</h2>
+              <p className="text-gray-700 mb-4">
+                All conversations are encrypted and processed securely through ElevenLabs' infrastructure. We prioritize your privacy and data security.
+              </p>
               <p className="text-gray-700">
-                All conversations are encrypted and processed securely. We do not store personal data beyond the current session. Your privacy is our priority.
+                OyaTalk is designed to be ethical, culturally sensitive, and secure. We do not store personal data beyond the current session, and we maintain strict privacy standards.
+              </p>
+            </CardBody>
+          </Card>
+
+          <Card className="bg-white border border-gray-200">
+            <CardBody className="p-8">
+              <h2 className="text-2xl font-bold text-gray-900 mb-4">Support & Contact</h2>
+              <p className="text-gray-700">
+                For account-specific support, custom integrations, or to learn more about NaijaPrompt's services, visit <strong>naijaprompt.ng</strong> or contact our team directly.
               </p>
             </CardBody>
           </Card>
