@@ -6,6 +6,7 @@ import { HeroUIProvider, Navbar, NavbarBrand, NavbarContent, NavbarItem, NavbarM
 import { Instrument_Serif } from 'next/font/google'
 import { ThemeProvider } from "@/components/theme-provider"
 import { ThemeToggle } from "@/components/theme-toggle"
+import { AuthNavigation } from "@/components/auth-navigation"
 import { OrbLogo } from "@/components/orb-logo"
 import { Menu } from 'lucide-react'
 
@@ -84,11 +85,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
                   <ThemeToggle />
                 </NavbarItem>
                 <NavbarItem className="hidden sm:flex">
-                  <Link href="/chat">
-                    <Button className="bg-foreground text-background font-medium px-6" radius="full">
-                      Get Started
-                    </Button>
-                  </Link>
+                  <AuthNavigation />
                 </NavbarItem>
                 <NavbarItem className="sm:hidden">
                   <ThemeToggle />
